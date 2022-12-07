@@ -1,0 +1,53 @@
+﻿@model MenuViewModel
+@{
+    ViewData["Title"] = "Index";
+    int i = 0;
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+    <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+        <p class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Menu</p>
+        <div class="d-inline-flex mb-lg-5">
+            <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
+            <p class="m-0 text-white px-2">/</p>
+            <p class="m-0 text-white">Menu</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+<!-- Drinks Menu Start -->
+<div class="container-fluid pt-5">
+    <div class="container">
+        <div class="section-title">
+            <p class="text-primary text-uppercase" style="letter-spacing: 5px;">Menu & Pricing</p>
+        </div>
+        <div class="row">
+            @while(i < Model.ProductCategories.Count)
+            {
+                <div class="col-lg-6">
+                    <h1 class="mb-5">@Model.ProductCategories[i].Name</h1>
+                    @for(int j=0;j<Model.Products.Count; j++)
+                    {
+                        @if(Model.Products[j].CategoryId == Model.ProductCategories[i].Id)
+                        {
+                            <div class="row align-items-center mb-5">
+                                <div class="col-4 col-sm-3">
+                                    <img class="w-100 rounded-circle mb-3 mb-sm-0" src="~/assets/img/@Model.Products[j].ImageUrl" alt="">
+                                    <h2 class="menu-price">$@Model.Products[j].Price</h2>
+                                </div>
+                                <div class="col-8 col-sm-9">
+                                    <h4>@Model.Products[j].Name</h4>
+                                    <p class="m-0">@Model.Products[j].Description</p>
+                                </div>
+                            </div>
+                        }
+                        
+                    }
+                    
+                </div>
+                    i++;
+            }
+        </div>
+    </div>
+</div>

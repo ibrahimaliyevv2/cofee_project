@@ -1,0 +1,237 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Index";
+    int z = 0;
+}
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0 mb-5">
+    <div id="blog-carousel" class="carousel slide overlay-bottom" data-ride="carousel">
+        <div class="carousel-inner">
+            @for(int i=0;i<Model.Sliders.Count;i++)
+            {
+                <div class="carousel-item @(i==0?"active":"")">
+                    <img class="w-100" src="~/assets/img/@Model.Sliders[i].ImageUrl" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <p class="text-primary font-weight-medium m-0">@Model.Sliders[i].Description</p>
+                        <p class="display-1 text-white m-0">@Model.Sliders[i].Title</p>
+                        <p class="text-white m-0">@Model.Sliders[i].Subtitle</p>
+                    </div>
+                </div>
+            }
+            
+          
+        </div>
+        <a class="carousel-control-prev" href="#blog-carousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#blog-carousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+<!-- Carousel End -->
+<!-- About Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="section-title">
+            <p class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 py-0 py-lg-5">
+                <h3 class="mb-3">@Model.AboutFeatures[0].Title1</h3>
+                <p>@Model.AboutFeatures[0].Description1</p>
+            </div>
+            <div class="col-lg-4 py-5 py-lg-0" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100" src="~/assets/img/@Model.AboutFeatures[0].ImageUrl" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-4 py-0 py-lg-5">
+                <h3 class="mb-3">@Model.AboutFeatures[0].Title2</h3>
+                <p>@Model.AboutFeatures[0].Description2</p>
+                <p>@Model.AboutFeatures[0].AddedText1</p>
+                <p class="mb-3"><i class="fa fa-check text-primary mr-3"></i>@Model.AboutFeatures[0].AddedText2</p>
+                <p class="mb-3"><i class="fa fa-check text-primary mr-3"></i>@Model.AboutFeatures[0].AddedText3</p>
+            </div>
+            <div class="col-lg-12 py-0 py-lg-5 d-flex justify-content-center">
+                <a asp-controller="home" asp-action="about" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+<!-- Design -->
+<div class="offer container-fluid my-5 py-5 text-center position-relative overlay-top overlay-bottom">
+    <div class="container py-5"></div>
+</div>
+<!-- Design -->
+<!-- Service Start -->
+<div class="container-fluid pt-5">
+    <div class="container">
+        <div class="section-title">
+            <p class="text-primary text-uppercase" style="letter-spacing: 5px;">Our Services</p>
+        </div>
+        <div class="row">
+            @foreach(Service service in Model.Services)
+            {
+                <div class="col-lg-6 mb-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-5">
+                            <img class="img-fluid mb-3 mb-sm-0" src="~/assets/img/@service.ImageUrl" alt="">
+                        </div>
+                        <div class="col-sm-7">
+                            <h5>@Html.Raw(service.IconUrl)
+                                @service.Title</h5>
+                            <p class="m-0">@service.Description</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+<!-- Offer Start -->
+<div class="offer container-fluid my-5 py-5 text-center position-relative overlay-top overlay-bottom">
+    <div class="container py-5">
+        <p class="display-3 text-primary mt-3">50% OFF</p>
+        <h1 class="text-white mb-3">2nd Anniversary Special Offer</h1>
+        <h4 class="text-white font-weight-normal mb-4 pb-3">Only for Sunday from 8th Nov to 8th Dec 2022</h4>
+        <form class="form-inline justify-content-center mb-4">
+            <div class="input-group">
+                <input type="text" class="form-control p-4" placeholder="Your Email" style="height: 60px;">
+                <div class="input-group-append">
+                    <button class="btn btn-primary font-weight-bold px-4" type="submit">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Offer End -->
+<!-- Menu Start -->
+<div class="container-fluid pt-5">
+    <div class="container">
+        <div class="section-title">
+            <p class="text-primary text-uppercase" style="letter-spacing: 5px;">Menu & Pricing</p>
+        </div>
+        <div class="row">
+            @while (z < 2)
+            {
+                <div class="col-lg-6">
+                    <h1 class="mb-5">@Model.ProductCategories[z].Name</h1>
+                    @for (int j = 0; j < Model.Products.Count; j++)
+                    {
+                        @if (Model.Products[j].CategoryId == Model.ProductCategories[z].Id)
+                        {
+                            <div class="row align-items-center mb-5">
+                                <div class="col-4 col-sm-3">
+                                    <img class="w-100 rounded-circle mb-3 mb-sm-0" src="~/assets/img/@Model.Products[j].ImageUrl" alt="">
+                                    <h2 class="menu-price">$@Model.Products[j].Price</h2>
+                                </div>
+                                <div class="col-8 col-sm-9">
+                                    <h4>@Model.Products[j].Name</h4>
+                                    <p class="m-0">@Model.Products[j].Description</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                    z++;
+            }
+
+            <div class="col-lg-12 d-flex justify-content-center">
+                <a asp-controller="menu" asp-action="index" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Get Full Menu</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Menu End -->
+<!-- Design -->
+<div class="offer container-fluid my-5 py-5 text-center position-relative overlay-top overlay-bottom">
+    <div class="container py-5"></div>
+</div>
+<!-- Design -->
+<!-- Reservation Start -->
+<div class="container-fluid my-5">
+    <div class="container">
+        <div class="reservation position-relative overlay-top overlay-bottom">
+            <div class="row align-items-center">
+                <div class="col-lg-6 my-5 my-lg-0">
+                    <div class="p-5">
+                        <div class="mb-4">
+                            <h1 class="display-3 text-primary">30% OFF</h1>
+                            <h1 class="text-white">For Online Reservation</h1>
+                        </div>
+                        <p class="text-white">Whether you’re on a phone, tablet or laptop, your Desvelar order is at your fingertips. Explore the menu, customize your order just how you like it, and find the store location that’s best for you</p>
+                        <ul class="list-inline text-white m-0">
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Take advantage of the discount</li>
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Order & pay ahead</li>
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Get to free faster</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
+                        <h1 class="text-white mb-4 mt-5">Book Your Table</h1>
+                        <form class="mb-5">
+                            <div class="form-group">
+                                <input type="text" class="form-control bg-transparent border-primary p-4" placeholder="Name"
+                                       required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control bg-transparent border-primary p-4" placeholder="Email"
+                                       required="required" />
+                            </div>
+                            <div class="form-group">
+                                <div class="date" id="date" data-target-input="nearest">
+                                    <input type="text" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Date" data-target="#date" data-toggle="datetimepicker" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="time" id="time" data-target-input="nearest">
+                                    <input type="text" class="form-control bg-transparent border-primary p-4 datetimepicker-input" placeholder="Time" data-target="#time" data-toggle="datetimepicker" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Book Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Reservation End -->
+<!-- Design -->
+<div class="offer container-fluid my-5 py-5 text-center position-relative overlay-top overlay-bottom">
+    <div class="container py-5"></div>
+</div>
+<!-- Design -->
+<!-- Testimonial Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="section-title">
+            <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Testimonial</h4>
+            <h1 class="display-4">Our Clients Say</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+            @foreach (Visitor visitor in Model.Visitors)
+            {
+                <div class="testimonial-item">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid" src="~/assets/img/@visitor.ImageUrl" alt="">
+                        <div class="ml-3">
+                            <h4>@visitor.Name</h4>
+                            <i>@visitor.Job</i>
+                        </div>
+                    </div>
+                    <p class="m-0">@visitor.Comment</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
