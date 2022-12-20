@@ -1,9 +1,10 @@
 ﻿using CofeeProject.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CofeeProject.DAL
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext:IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
         {
@@ -17,5 +18,11 @@ namespace CofeeProject.DAL
         public DbSet<Product> Products { get; set; }
         public DbSet<Visitor> Visitors { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
+        public DbSet<Discounter> Discounters { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<AppUser> Users { get; set; }
     }
 }

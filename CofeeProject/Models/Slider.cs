@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CofeeProject.Models
 {
@@ -14,5 +16,7 @@ namespace CofeeProject.Models
         public string Subtitle { get; set; }
         [StringLength(maximumLength: 100)]
         public string ImageUrl { get; set; }
+        [NotMapped]
+        public IFormFile Image { get; set; }
     }
 }

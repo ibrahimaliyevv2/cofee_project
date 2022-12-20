@@ -10,7 +10,7 @@ namespace CofeeProject.Controllers
 {
     public class HomeController : Controller
     {
-        private AppDbContext _context;
+        private readonly AppDbContext _context;
         public HomeController(AppDbContext context)
         {
             _context = context;
@@ -36,6 +36,20 @@ namespace CofeeProject.Controllers
 
             return View(homeVM);
         }
+        [HttpPost]
+        public IActionResult Index(Reservation reservation)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            _context.Reservations.Add(reservation);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
 
         public IActionResult About()
         {
@@ -59,6 +73,20 @@ namespace CofeeProject.Controllers
             };
 
             return View(contactVM);
+        }
+        [HttpPost]
+        public IActionResult Contact(Message message)
+        {
+            
+                if (!ModelState.IsValid)
+                {
+                    return View();
+                }
+
+                _context.Messages.Add(message);
+                _context.SaveChanges();
+
+                return RedirectToAction("Contact");
         }
     }
 }

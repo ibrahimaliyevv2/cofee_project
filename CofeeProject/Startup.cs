@@ -1,7 +1,10 @@
 using CofeeProject.DAL;
+using CofeeProject.Models;
+using CofeeProject.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +33,10 @@ namespace CofeeProject
             {
                 object value = options.UseSqlServer(@"Server=DESKTOP-FCKEBID\SQLEXPRESS01;Database=CofeeDB;Trusted_Connection=TRUE");
             });
+
+            services.AddScoped<LayoutService>();
+
+            services.AddIdentity<AppUser, IdentityRole>().AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -41,13 +48,14 @@ namespace CofeeProject
 
             app.UseRouting();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                    "areas",
-                   "{area:exists}/{controller=home}/{action=index}/{id?}"
+                   "{area:exists}/{controller=dashboard}/{action=index}/{id?}"
                    );
 
                 endpoints.MapControllerRoute(

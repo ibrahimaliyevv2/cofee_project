@@ -11,5 +11,6 @@ namespace CofeeProject.ViewModels
         public List<ProductCategory> ProductCategories { get; set; }
         public List<Product> Products { get; set; }
         public List<Visitor> Visitors { get; set; }
+        public Reservation reservation { get; set; }
     }
 }

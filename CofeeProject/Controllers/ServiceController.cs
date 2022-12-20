@@ -9,7 +9,7 @@ namespace CofeeProject.Controllers
 {
     public class ServiceController : Controller
     {
-        private AppDbContext _context;
+        private readonly AppDbContext _context;
         public ServiceController(AppDbContext context)
         {
             _context= context;

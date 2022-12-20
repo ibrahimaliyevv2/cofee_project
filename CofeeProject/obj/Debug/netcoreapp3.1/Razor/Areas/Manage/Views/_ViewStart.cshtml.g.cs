@@ -26,8 +26,15 @@ using CofeeProject.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\Ibrahim Aliyev\source\repos\CofeeProject\CofeeProject\Areas\Manage\Views\_ViewImports.cshtml"
+using CofeeProject.Areas.Manage.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Areas/Manage/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d8209e8aa58a3e6863aada4a2ad17661ec337402", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e847496b2d34e4dd9879227d9c46ae20356b651d", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_Manage_Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable

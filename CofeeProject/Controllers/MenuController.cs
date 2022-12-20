@@ -10,7 +10,7 @@ namespace CofeeProject.Controllers
 {
     public class MenuController : Controller
     {
-        private AppDbContext _context;
+        private readonly AppDbContext _context;
         public MenuController(AppDbContext context)
         {
             _context= context;

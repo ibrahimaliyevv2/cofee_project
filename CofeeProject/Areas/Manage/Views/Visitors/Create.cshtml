@@ -1,0 +1,33 @@
+﻿@model Visitor
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <div class="col-md-10">
+        <h1>Create new visitor</h1>
+        <form asp-action="create" method="post" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label asp-for="Name">Visitor name</label>
+                <input asp-for="Name" type="text" class="form-control" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label asp-for="Job">Visitor job</label>
+                <input asp-for="Job" type="text" class="form-control" placeholder="Enter job">
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment">Visitor comment</label>
+                <textarea asp-for="Comment" type="text" class="form-control" placeholder="Enter comment" rows="7"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image">Image</label>
+                <input asp-for="Image" type="file" class="form-control" placeholder="Image">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+

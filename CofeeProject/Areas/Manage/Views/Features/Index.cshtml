@@ -1,0 +1,121 @@
+﻿@model List<AboutFeature>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+         <div class="col-md-10">
+        </div>
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>About Features table</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title 1</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title 2</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title 3</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (AboutFeature feature in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm text-center">@feature.Title1</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                         <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm text-center">@feature.Title2</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm text-center">@feature.Title3</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <br />
+                         <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description 1</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description 2</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description 3</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (AboutFeature feature in Model)
+                                {
+                                        <tr>
+                                           <td class="align-middle text-center text-sm">
+                                                <p class="text-xs font-weight-bold mb-0 text-ellipsisself">@feature.Description1</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-xs font-weight-bold mb-0 text-ellipsisself">@feature.Description2</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-xs font-weight-bold mb-0 text-ellipsisself">@feature.Description3</p>
+                                            </td>
+                                        </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <br />
+                         <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Added Text 1</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Added Text 2</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Added Text 3</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
+                                    <th class="text-secondary opacity-7"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (AboutFeature feature in Model)
+                                {
+                                        <tr>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-xs font-weight-bold mb-0 text-ellipsisself">@feature.AddedText1</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-xs font-weight-bold mb-0 text-ellipsisself">@feature.AddedText2</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-xs font-weight-bold mb-0 text-ellipsisself">@feature.AddedText3</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-xs font-weight-bold mb-0"><img class="w-50" src="~/uploads/about/@feature.ImageUrl"></p>
+                                            </td>
+                                            <td class="align-middle">
+                                            <a asp-action="edit" asp-route-id="@feature.Id" class="btn btn-warning"><i class="fa-solid fa-pencil"></i></a>
+                                            </td>
+                                        </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

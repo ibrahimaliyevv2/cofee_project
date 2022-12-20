@@ -1,0 +1,24 @@
+﻿@model Subscriber
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Offer Start -->
+<div class="offer container-fluid text-center position-relative overlay-top overlay-bottom">
+    <div class="container py-5">
+        <p class="display-3 text-primary mt-5">50% OFF TO SUBSCRIBERS!</p>
+        <h1 class="text-white mb-3">2nd Anniversary Special Offer</h1>
+        <h4 class="text-white font-weight-normal mb-4 pb-3">From 28th Dec 2022 to 8th Fev 2023</h4>
+        <form asp-action="index" method="post" class="form-inline justify-content-center mb-4">
+            <div class="input-group">
+                <input asp-for="Email" type="text" class="form-control p-4" placeholder="Your Email" style="height: 60px;">
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <div class="input-group-append">
+                    <button class="btn btn-primary font-weight-bold px-4" type="submit">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Offer End -->
+

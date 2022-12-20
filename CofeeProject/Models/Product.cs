@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 
 namespace CofeeProject.Models
@@ -13,9 +15,10 @@ namespace CofeeProject.Models
         [Required]
         [StringLength(maximumLength:200)]
         public string Description { get; set; }
-        [Required]
         [StringLength(maximumLength:100)]
         public string ImageUrl { get; set; }
+        [NotMapped]
+        public IFormFile Image { get; set; }
         public int Price { get; set; }
         public int CategoryId { get; set; }
         public ProductCategory Category { get; set; }

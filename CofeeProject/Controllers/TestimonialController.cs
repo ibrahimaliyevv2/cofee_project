@@ -9,7 +9,7 @@ namespace CofeeProject.Controllers
 {
     public class TestimonialController : Controller
     {
-        private AppDbContext _context;
+        private readonly AppDbContext _context;
         public TestimonialController(AppDbContext context)
         {
             _context = context;
